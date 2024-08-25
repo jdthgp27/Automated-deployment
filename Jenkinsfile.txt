@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t myapp:latest .'
+            }
+        }
+        stage('Test') {
+            steps {
+                // Aquí podrías agregar pruebas unitarias o de integración
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './scripts/deploy.sh'
+            }
+        }
+    }
+}
